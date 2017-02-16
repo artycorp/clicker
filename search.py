@@ -93,9 +93,11 @@ class Search:
     # search query string in yandex
     def findQueryYA(self):
         input = self.browser.find_element_by_xpath("// input[ @ id = 'text']")
+        ActionChains(self.browser) \
+            .send_keys(Keys.HOME) \
+            .perform()
         for ch in self.query:
             ActionChains(self.browser) \
-                .move_to_element(input) \
                 .send_keys(ch) \
                 .perform()
                 #.send_keys(Keys.HOME) \
