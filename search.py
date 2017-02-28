@@ -114,15 +114,14 @@ class Search:
 
     def getCntElems(self, query):
         elems = self.browser.find_elements_by_xpath(query)
-        i = 0
+        i = 1
         for elem in elems:
             if i > self.MAX_SERACHED_ITEMS:
                 break
-            # пропустить первый элемент говнокод:(
-            if i > 0:
-                time = datetime.datetime.now().strftime(DATE_FORMAT)
-                self.file.write('{}-{}-{}\n'.format(time, str(i), elem.get_attribute("href")))
-            i = i + 1
+
+            time = datetime.datetime.now().strftime(DATE_FORMAT)
+            self.file.write(u'{}-{}-{}\n'.format(time, str(i), elem.text).encode('utf8'))
+            i += 1
 
 
     def Search(self):
@@ -134,7 +133,7 @@ class Search:
 
         try:
             self.file.write(self.query.encode("UTF-8") + "\n")
-            self.getCntElems("//li[@data-cid]/div/div[1]/div[1]/a[1][@href]")
+            self.getCntElems("//li[@data-cid]/div/div[2]/div[1]/a")
         except:
             self.logger.error("error in getCntElems")
 
