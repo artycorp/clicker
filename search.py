@@ -94,6 +94,9 @@ class Search:
     def findQueryYA(self):
         input = self.browser.find_element_by_xpath("// input[ @ id = 'text']")
         ActionChains(self.browser) \
+            .send_keys(Keys.TAB) \
+            .send_keys(Keys.TAB) \
+            .send_keys(Keys.TAB) \
             .send_keys(Keys.HOME) \
             .perform()
         for ch in self.query:
