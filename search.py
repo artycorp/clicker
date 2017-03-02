@@ -136,7 +136,9 @@ class Search:
 
         try:
             self.file.write(self.query.encode("UTF-8") + "\n")
-            self.getCntElems("//li[@data-cid]/div/div[2]/div[1]/a")
+            #self.getCntElems("//li[@data-cid]/div/div[2]/div[1]/a")
+            self.getCntElems("//li[@data-cid]/div/div[1]/div[2]/a")
+            texnodoctor-perm.ru
         except:
             self.logger.error("error in getCntElems")
 
